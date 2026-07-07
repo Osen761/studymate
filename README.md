@@ -52,7 +52,7 @@ cd backend
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+./scripts/dev_server.sh
 ```
 
 Frontend:
@@ -70,6 +70,13 @@ docker compose up --build
 ```
 
 ChromaDB persists through the `chroma-data` Docker volume or `backend/chroma_db/` locally.
+
+If you prefer to run Uvicorn directly on Linux and hit `OS file watch limit reached`,
+use polling for the reload watcher:
+
+```bash
+WATCHFILES_FORCE_POLLING=true uvicorn app.main:app --reload --reload-dir app
+```
 
 ## Firebase Setup
 

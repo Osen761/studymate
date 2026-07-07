@@ -8,7 +8,18 @@ cp .env.example .env
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+./scripts/dev_server.sh
+```
+
+The dev script runs Uvicorn with reload polling enabled and watches only `app/`.
+That avoids Linux inotify exhaustion errors such as `OS file watch limit reached`.
+
+If you want to raise the Linux watch limits instead, run:
+
+```bash
+echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/99-studymate-inotify.conf
+echo fs.inotify.max_user_instances=1024 | sudo tee -a /etc/sysctl.d/99-studymate-inotify.conf
+sudo sysctl --system
 ```
 
 Run tests:
