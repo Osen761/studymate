@@ -1,10 +1,30 @@
 # Local Development
 
+Use this guide for Linux, macOS, or WSL. For native Windows PowerShell, see [Windows Setup](Windows_Setup.md).
+
+## Prerequisites
+
+- Python 3.12
+- Node.js LTS, which includes `npm`
+- Git
+
+Google Cloud SDK is optional. StudyMate uses Firebase service account values from `backend/.env`; it does not require `gcloud` or Application Default Credentials to run locally.
+
 ## Backend
+
+To run backend and frontend together:
+
+```bash
+./scripts/dev.sh
+```
+
+The combined runner checks for Python, Node.js, and npm. If one is missing, it tries to install it with `apt`, `dnf`, `pacman`, or Homebrew.
+
+Or run each app separately:
 
 ```bash
 cd backend
-cp .env.example .env
+[ -f .env ] || cp .env.example .env
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -33,7 +53,7 @@ pytest
 
 ```bash
 cd frontend
-cp .env.example .env.local
+[ -f .env.local ] || cp .env.example .env.local
 npm install
 npm run dev
 ```

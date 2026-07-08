@@ -22,6 +22,11 @@ The frontend never calls Cortex and never receives `CORTEX_API_KEY`. The backend
 3. Copy `frontend/.env.example` to `frontend/.env.local`.
 4. Fill Firebase and Cortex values.
 
+Platform setup:
+
+- Linux/macOS: see [Local Development](docs/Local_Development.md).
+- Windows PowerShell: see [Windows Setup](docs/Windows_Setup.md).
+
 Backend env:
 
 - `CORS_ORIGINS`
@@ -45,6 +50,14 @@ Frontend env:
 
 ## Run Locally
 
+Run backend and frontend together:
+
+```bash
+./scripts/dev.sh
+```
+
+The dev runner checks for Python, Node.js, and npm. On Linux/macOS/WSL it tries to install missing prerequisites with the available package manager before starting the app.
+
 Backend:
 
 ```bash
@@ -62,6 +75,14 @@ cd frontend
 npm install
 npm run dev
 ```
+
+On Windows PowerShell, run:
+
+```powershell
+.\scripts\dev.ps1
+```
+
+The Windows runner checks for Python 3.12, Node.js, and npm. If something is missing, it tries to install it with `winget` and asks you to reopen PowerShell so PATH updates are loaded.
 
 Docker compose:
 
@@ -81,6 +102,8 @@ WATCHFILES_FORCE_POLLING=true uvicorn app.main:app --reload --reload-dir app
 ## Firebase Setup
 
 Use Firebase Auth on the frontend. Create a Firebase service account for the backend and place the service account `project_id`, `client_email`, and escaped private key in `backend/.env`.
+
+Google Cloud SDK is not required for normal local development. The backend reads Firebase service account values from `backend/.env` and does not call `gcloud`. Install Google Cloud SDK only for separate project-management or deployment workflows.
 
 ## Cortex Setup
 
