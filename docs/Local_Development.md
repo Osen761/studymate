@@ -12,13 +12,25 @@ Google Cloud SDK is optional. StudyMate uses Firebase service account values fro
 
 ## Backend
 
-To run backend and frontend together:
+First-time setup:
+
+```bash
+./scripts/setup.sh
+```
+
+Start backend and frontend after setup:
+
+```bash
+./scripts/start.sh
+```
+
+One-command setup and start, useful for first-run demos:
 
 ```bash
 ./scripts/dev.sh
 ```
 
-The combined runner checks for Python, Node.js, and npm. If one is missing, it tries to install it with `apt`, `dnf`, `pacman`, or Homebrew.
+The setup runner checks for Python, Node.js, and npm. If one is missing, it tries to install it with `apt`, `dnf`, `pacman`, or Homebrew.
 
 Or run each app separately:
 

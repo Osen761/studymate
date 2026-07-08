@@ -50,13 +50,25 @@ Frontend env:
 
 ## Run Locally
 
-Run backend and frontend together:
+First-time setup:
+
+```bash
+./scripts/setup.sh
+```
+
+Start backend and frontend after setup:
+
+```bash
+./scripts/start.sh
+```
+
+One-command setup and start, useful for first-run demos:
 
 ```bash
 ./scripts/dev.sh
 ```
 
-The dev runner checks for Python, Node.js, and npm. On Linux/macOS/WSL it tries to install missing prerequisites with the available package manager before starting the app.
+The setup runner checks for Python, Node.js, and npm. On Linux/macOS/WSL it tries to install missing prerequisites with the available package manager before installing project dependencies.
 
 Backend:
 
@@ -76,13 +88,25 @@ npm install
 npm run dev
 ```
 
-On Windows PowerShell, run:
+On Windows PowerShell, run first-time setup:
+
+```powershell
+.\scripts\setup.ps1
+```
+
+Then start backend and frontend:
+
+```powershell
+.\scripts\start.ps1
+```
+
+Or run setup and start together:
 
 ```powershell
 .\scripts\dev.ps1
 ```
 
-The Windows runner checks for Python 3.12, Node.js, and npm. If something is missing, it tries to install it with `winget` and asks you to reopen PowerShell so PATH updates are loaded.
+The Windows setup runner checks for Python 3.12, Node.js, and npm. If something is missing, it tries to install it with `winget` and asks you to reopen PowerShell so PATH updates are loaded.
 
 Docker compose:
 

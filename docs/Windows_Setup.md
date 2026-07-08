@@ -53,13 +53,25 @@ Fill the Firebase, Cortex, and frontend values before running the app.
 
 ## Backend
 
-To run backend and frontend together:
+First-time setup:
+
+```powershell
+.\scripts\setup.ps1
+```
+
+Start backend and frontend after setup:
+
+```powershell
+.\scripts\start.ps1
+```
+
+One-command setup and start, useful for first-run demos:
 
 ```powershell
 .\scripts\dev.ps1
 ```
 
-The combined runner checks for Python 3.12, Node.js, and npm. If one is missing, it tries to install it with `winget`. After a new install, reopen PowerShell so PATH updates are loaded, then run the script again.
+The setup runner checks for Python 3.12, Node.js, and npm. If one is missing, it tries to install it with `winget`. After a new install, reopen PowerShell so PATH updates are loaded, then run setup again.
 
 Or run each app separately:
 
